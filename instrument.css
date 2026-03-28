@@ -1,0 +1,267 @@
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Lora', serif;
+      background: linear-gradient(135deg, #337794 0%, #70acc0 50%, #2c5364 100%);
+      min-height: 100vh;
+      padding: 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Animated Background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .instrument-dashboard {
+      max-width: 1400px;
+      width: 100%;
+      margin: 0 auto;
+      background: rgba(66, 97, 110, 0.85);
+      backdrop-filter: blur(20px);
+      border-radius: 2rem;
+      padding: 2rem;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-family: 'Lora', serif;
+      font-weight: 700;
+      font-size: 2.8rem;
+      background: linear-gradient(135deg, #ffd89b 0%, #c7e9fb 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-family: 'Lora', serif;
+      font-size: 0.95rem;
+      color: #c7e9fb;
+      display: inline-block;
+      padding: 6px 20px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50px;
+      font-weight: 500;
+    }
+
+    .inst-selector {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .inst-btn {
+      font-family: 'Lora', serif;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 12px 28px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 60px;
+      color: #e0e0e0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .inst-btn i {
+      margin-right: 8px;
+    }
+
+    .inst-btn.active {
+      background: linear-gradient(135deg, #ffd89b 0%, #c7e9fb 100%);
+      color: #1a2a32;
+      border-color: transparent;
+      transform: scale(1.05);
+    }
+
+    .keyword-panel {
+      background: rgba(0,0,0,0.3);
+      border-radius: 2rem;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .keyword-badge {
+      font-family: 'Lora', serif;
+      background: rgba(255,255,255,0.1);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-weight: 500;
+      font-size: 0.85rem;
+      color: #ffd89b;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .keyword-badge:hover {
+      background: rgba(255,216,155,0.2);
+      transform: translateY(-2px);
+    }
+
+    .volume-control {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 1.5rem;
+      padding: 10px 20px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 60px;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .volume-control i {
+      color: #ffd89b;
+    }
+
+    .volume-control span {
+      color: #c7e9fb;
+      font-weight: 500;
+    }
+
+    input[type="range"] {
+      width: 180px;
+      height: 4px;
+      
+      background: linear-gradient(90deg, #ffd89b, #c7e9fb);
+      border-radius: 2px;
+      outline: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #ffd89b;
+      cursor: pointer;
+      border: 2px solid white;
+    }
+
+    .keyboard-container {
+      background: rgba(0,0,0,0.4);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      overflow-x: auto;
+    }
+
+    .piano-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: nowrap;
+      gap: 6px;
+      min-width: fit-content;
+    }
+
+    .key {
+      font-family: 'Lora', serif;
+      background: linear-gradient(135deg, #fef9e6 0%, #fff3e0 100%);
+      width: 70px;
+      height: 170px;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding-bottom: 20px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #2c3e50;
+      cursor: pointer;
+      transition: all 0.05s linear;
+      position: relative;
+      box-shadow: 0 6px 0 #bdc3c7;
+    }
+
+    .key.black-key {
+      background: linear-gradient(135deg, #2c3e50 0%, #1a2632 100%);
+      width: 55px;
+      height: 115px;
+      box-shadow: 0 4px 0 #0f1720;
+      color: #ffd89b;
+      margin-bottom: 10px;
+    }
+
+    .key:active, .key-active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 #bdc3c7;
+    }
+
+    .key.black-key:active, .black-key.key-active {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 #0f1720;
+    }
+
+    .key strong {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
+
+    .key span {
+      font-size: 0.75rem;
+      background: rgba(0,0,0,0.08);
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .key.black-key span {
+      background: rgba(255,255,255,0.1);
+      color: #ffd89b;
+    }
+
+    
+
+    
+    
+
+    
+
+    footer {
+      text-align: center;
+      margin-top: 1.5rem;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.75rem;
+    }
+
+    @media (max-width: 900px) {
+      .instrument-dashboard { padding: 1rem; }
+      h1 { font-size: 1.8rem; }
+      .key { width: 55px; height: 140px; font-size: 0.9rem; }
+      .key.black-key { width: 48px; height: 95px; }
+      .key strong { font-size: 1rem; }
+    }
